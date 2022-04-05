@@ -62,8 +62,8 @@ Feature_X = np.array(Feature_X) '''THE FINAL LATENT REPRESENTATIONS OF LOADER (E
 load = #LOAD THE PRETRAINED NETWORK (1st level)
 load.to(device)
 dual = #LOAD 2nd and 3rd model separately.
-'''
-Note that, you can select here a specific model between 2nd level nework or 3rd level network. You have to extract both of them separately. '''
+
+'''Note that,for the variable "dual", you can selectively load  a specific model either 2nd level nework or 3rd level. You have to extract both of them separately. '''
 
 
 print('Start Feature Extraction')

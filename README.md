@@ -14,7 +14,7 @@ UDIAT: http://www2.docm.mmu.ac.uk/STAFF/M.Yap/dataset.php<br/>
 
 **If you use this dataset, please cite:**<br/>
 <br/>
-BUSI: Al-Dhabyani W, Gomaa M, Khaled H, Fahmy A. Dataset of breast ultrasound images. Data in Brief. 2020 Feb;28:104863. DOI: 10.1016/j.dib.2019.104863.<br/>
+BUSI: Al-Dhabyani W, Gomaa M, Khaled H, Fahmy A. Dataset of breast ultrasound images. Data in Brief. 2020 Feb;28:104863. DOI: 10.1016/j.dib.2019.104863.<br/><br/>
 UDIAT: Yap, M.H., Pons, G., Marti, J., Ganau, S., Sentis, M., Zwiggelaar, R., Davison, A.K. and Marti, R.(2017), Automated Breast Ultrasound Lesions Detection using Convolutional Neural Networks. IEEE journal of biomedical and health informatics. doi: 10.1109/JBHI.2017.2731873 <br/>
 
 

@@ -21,6 +21,8 @@ The data  used in this study are publicly available.
 # Triple_Reconstruction
 ___
 
+Note that, a customized convolutional autoencoder can be found in (Backbone.py)
+
 * Pretraining the first network (pretrain.py)
 * Using pretrained model, train two additional networks separately.(2levCAE.py and 3levCAE.py)
 * Once the training is done, extracts the features corresponding to trainng and testing sets. (feature_extraction.py)

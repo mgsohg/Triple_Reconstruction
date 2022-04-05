@@ -11,8 +11,7 @@ train_x2 = #load the second representations
 train_x3 = #load the third representations
 train_y = #Load the label
 
-##You can use any tran_y between first, second, and third network
-##Since we extracted features without shuffling.
+'''You can use any tran_y between first, second, and third network since we extracted features without shuffling.'''
 
 # Flatten && Concat for training set
 train_x1 = train_x1.flatten()

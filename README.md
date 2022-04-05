@@ -29,6 +29,9 @@ Note that, a customized convolutional autoencoder can be found in (Backbone.py)
 * Finding the optimal *K* in clustering (In our case, we utilized the method of Silhouette coefficient)
 * Fuse the features (Flatten and Concat) and provide it to kmeans clustering with the optimal k (Can be found in kmeans.py)
 
+Also, it is worth mentioning that, extracting label information is to measure the discriminant performance by comparing with prediction labels.
+In our case, we utilize training labels in order to visualize two dimensional map.
+
 
 # Requirements
 ___

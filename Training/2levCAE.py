@@ -26,7 +26,7 @@ test_loader = torch.utils.data.DataLoader(dataset=Test, batch_size=64, shuffle=F
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
       
-### model: THe network that will be newly trained
+### model: 2levCAE
 ### load = Pretrained model
 
 model = ConvAutoencoder() 

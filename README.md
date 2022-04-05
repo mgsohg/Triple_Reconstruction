@@ -8,8 +8,8 @@ ___
 The data  used in this study are publicly available data sets.
 
 Accessibility:
-BUSI:,https://scholar.cu.edu.eg/?q=afahmy/pages/dataset\
-UDIAT: http://www2.docm.mmu.ac.uk/STAFF/M.Yap/dataset.php\
+BUSI:,https://scholar.cu.edu.eg/?q=afahmy/pages/dataset <br/>
+UDIAT: http://www2.docm.mmu.ac.uk/STAFF/M.Yap/dataset.php
 
 If you use this dataset, please cite:
 BUSI: Al-Dhabyani W, Gomaa M, Khaled H, Fahmy A. Dataset of breast ultrasound images. Data in Brief. 2020 Feb;28:104863. DOI: 10.1016/j.dib.2019.104863.\

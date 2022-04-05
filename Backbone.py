@@ -10,54 +10,54 @@ import matplotlib.pyplot as plt
 class ConvAutoencoder(nn.Module):
     def __init__(self):
         super(ConvAutoencoder, self).__init__()
-        self.conv1 = nn.Conv2d(1, 16, kernel_size=3, padding=1, stride=1)  # 24
+        self.conv1 = nn.Conv2d(1, 16, kernel_size=3, padding=1, stride=1)  
         self.relu1 = nn.ReLU()
-        self.pool1 = nn.MaxPool2d(2, 2, return_indices=True)  # 122
+        self.pool1 = nn.MaxPool2d(2, 2, return_indices=True) 
 
-        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, padding=1, stride=1)  # 112
+        self.conv2 = nn.Conv2d(16, 32, kernel_size=3, padding=1, stride=1) 
         self.relu2 = nn.ReLU()
-        self.pool2 = nn.MaxPool2d(2, 2, return_indices=True)  # 56
+        self.pool2 = nn.MaxPool2d(2, 2, return_indices=True) 
 
-        self.conv3 = nn.Conv2d(32, 64, kernel_size=3, padding=1, stride=1)  # 56
+        self.conv3 = nn.Conv2d(32, 64, kernel_size=3, padding=1, stride=1)  
         self.relu3 = nn.ReLU()
-        self.pool3 = nn.MaxPool2d(2, 2, return_indices=True)  # 28   //// 56-28 128
+        self.pool3 = nn.MaxPool2d(2, 2, return_indices=True)   
 
-        self.conv4 = nn.Conv2d(64, 128, kernel_size=3, padding=1, stride=1)  # 28
+        self.conv4 = nn.Conv2d(64, 128, kernel_size=3, padding=1, stride=1)  
         self.relu4 = nn.ReLU()
-        self.pool4 = nn.MaxPool2d(2, 2, return_indices=True)  # 14  //// 28-14 256
+        self.pool4 = nn.MaxPool2d(2, 2, return_indices=True)   
 
-        self.conv5 = nn.Conv2d(128, 256,  kernel_size=3, padding=1, stride=1)  # 14
+        self.conv5 = nn.Conv2d(128, 256,  kernel_size=3, padding=1, stride=1)  
         self.relu5 = nn.ReLU()
         self.pool5 = nn.MaxPool2d(2, 2, return_indices=True)
 
-        self.conv6 = nn.Conv2d(256, 512, kernel_size=7, stride=1)  # 1x1
+        self.conv6 = nn.Conv2d(256, 512, kernel_size=7, stride=1)  
         self.relu6 = nn.ReLU()
 
         # deconv
 
-        self.Convt1 = nn.ConvTranspose2d(512, 256, kernel_size=7, stride=1)  # 7
+        self.Convt1 = nn.ConvTranspose2d(512, 256, kernel_size=7, stride=1) 
         self.relu_Convt1 = nn.ReLU()
-        self.unpool1 = nn.MaxUnpool2d(kernel_size=2, stride=2)  # 14
+        self.unpool1 = nn.MaxUnpool2d(kernel_size=2, stride=2)
 
-        self.conv7 = nn.Conv2d(512, 256, kernel_size=3, padding=1, stride=1)  # 244
+        self.conv7 = nn.Conv2d(512, 256, kernel_size=3, padding=1, stride=1)  
         self.relu7 = nn.ReLU()
-        self.conv8 = nn.Conv2d(256, 128, kernel_size=3, padding=1, stride=1)  # 244
+        self.conv8 = nn.Conv2d(256, 128, kernel_size=3, padding=1, stride=1)  
         self.relu8 = nn.ReLU()
-        self.unpool2 = nn.MaxUnpool2d(kernel_size=2, stride=2)  # 28
+        self.unpool2 = nn.MaxUnpool2d(kernel_size=2, stride=2)
 
-        self.conv9 = nn.Conv2d(256, 128, kernel_size=3, padding=1, stride=1)  # 244
+        self.conv9 = nn.Conv2d(256, 128, kernel_size=3, padding=1, stride=1) 
         self.relu9 = nn.ReLU()
         self.conv10 = nn.Conv2d(128, 64, kernel_size=3, padding=1, stride=1)
         self.relu10 = nn.ReLU()
-        self.unpool3 = nn.MaxUnpool2d(kernel_size=2, stride=2)  # 56
+        self.unpool3 = nn.MaxUnpool2d(kernel_size=2, stride=2) 
 
-        self.conv11 = nn.Conv2d(128, 64, kernel_size=3, stride=1, padding=1)  # 56  //// 56- 112 64
+        self.conv11 = nn.Conv2d(128, 64, kernel_size=3, stride=1, padding=1) 
         self.relu11 = nn.ReLU()
         self.conv12 = nn.Conv2d(64, 32, kernel_size=3, padding=1, stride=1)
         self.relu12 = nn.ReLU()
-        self.unpool4 = nn.MaxUnpool2d(kernel_size=2, stride=2)  # 112
+        self.unpool4 = nn.MaxUnpool2d(kernel_size=2, stride=2) 
 
-        self.conv13 = nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1)  # 112  //// 112- 224 32
+        self.conv13 = nn.Conv2d(64, 32, kernel_size=3, stride=1, padding=1) 
         self.relu13 = nn.ReLU()
         self.conv14 = nn.Conv2d(32, 16, kernel_size=3, padding=1, stride=1)
         self.relu14 = nn.ReLU()
@@ -89,8 +89,9 @@ class ConvAutoencoder(nn.Module):
         x = self.relu5(con5)
         x, indices5 = self.pool5(x)
 
+        '''latent features'''
         x = self.conv6(x)
-        feature = x
+        latent = x
         x = self.relu6(x)
 
         # decoder
@@ -130,4 +131,4 @@ class ConvAutoencoder(nn.Module):
         x = self.conv15(concat_5)
         x = self.relu15(x)
         x = self.conv16(x)
-        return x, feature
+        return x, latent

@@ -151,7 +151,7 @@ class ConvAutoencoder(nn.Module):
         return x, latent
 
 
-
+#### MODEL: The base-line network (Will be used as a pretrained model)
 model = ConvAutoencoder()
 model.to(device)
 criterion = nn.MSELoss()
@@ -179,6 +179,6 @@ for epoch in range(1, training_epochs + 1):
     ToT_train_loss.append(train_loss)
     print('Epoch: {} \tTraining Loss: {:.6f}'.format(epoch, train_loss))
 
-torch.save(model, '...') #Save the first model
+save= #Save the first model
 
 

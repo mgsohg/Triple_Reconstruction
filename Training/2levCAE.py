@@ -25,9 +25,10 @@ test_loader = torch.utils.data.DataLoader(dataset=Test, batch_size=64, shuffle=F
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-      
-### model: 2levCAE
-### load = Pretrained model
+'''   
+model: 2levCAE
+load = Pretrained model
+'''
 
 model = ConvAutoencoder() 
 model.to(device)

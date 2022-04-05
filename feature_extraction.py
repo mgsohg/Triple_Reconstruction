@@ -66,12 +66,10 @@ dual = #LOAD 2nd and 3rd model separately.
 ###Note that, you can only adjust a specific model (2nd level nework or 3rd level network) 
 ### You have to extract both of them separately. 
 
-dual.to(device)
 
 print('Start Feature Extraction')
 print()
 for epoch in range(1, 2):
-    dual.eval()
     load.eval()
     Feature_Y = np.empty([0, 1])
     Feature_X = []

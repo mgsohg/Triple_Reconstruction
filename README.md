@@ -23,7 +23,7 @@ ___
 
 * Pretraining the first network (pretrain.py)
 * Using pretrained model, train two additional networks separately.(2levCAE.py and 3levCAE.py)
-* Once the training is done, extracts the features corresponding to trainng and testing sets. (FeatureExtraction.py)
+* Once the training is done, extracts the features corresponding to trainng and testing sets. (feature_extraction.py)
 * Finding the optimal *K* in clustering (In our case, we utilized the method of Silhouette coefficient)
 * Fuse the features (Flatten and Concat) and provide it to kmeans clustering with the optimal k (Can be found in kmeans.py)
 

@@ -23,8 +23,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 
 
-######Feature EXTRACTION of the first network
-#############################################
+'''Feature EXTRACTION of the first network'''
 
 load = #LOAD THE PRETRAINED model
 load.to(device)
@@ -51,20 +50,20 @@ for epoch in range(1, 2):
         features = features.flatten()
         Feature_X.append(features)
 
-Feature_X = np.array(Feature_X) #THE FINAL LATENT REPRESENTATIONS OF LOADER (Ext_Loader)
+Feature_X = np.array(Feature_X) '''THE FINAL LATENT REPRESENTATIONS OF LOADER (Ext_Loader)'''
 
 
 ##SAVE Feature_X and Feature_Y separately, This is for the baseline network
 
 
 
-######Feature EXTRACTION of ADDITIONAL NETWORKS
+'''Feature EXTRACTION of ADDITIONAL NETWORKS'''
 
 load = #LOAD THE PRETRAINED NETWORK (1st level)
 load.to(device)
 dual = #LOAD 2nd and 3rd model separately.
-###Note that, you can select here a specific model between 2nd level nework or 3rd level network
-### You have to extract both of them separately. 
+'''
+Note that, you can select here a specific model between 2nd level nework or 3rd level network. You have to extract both of them separately. '''
 
 
 print('Start Feature Extraction')

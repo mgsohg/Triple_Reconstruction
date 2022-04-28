@@ -21,16 +21,16 @@ The data  used in this study are publicly available.
 # Triple_Reconstruction
 ___
 
-Note that, a customized convolutional autoencoder can be found in (Backbone.py)
+Note that, a customized backbone architecture can be found in "Backbone.py"
 
-* Pretraining the first network (pretrain.py)
-* Using pretrained model, train two additional networks separately.(2levCAE.py and 3levCAE.py)
-* Once the training is done, extract the features corresponding to trainng and testing sets. (feature_extraction.py)
+* Pretrain the initial network in a generic way "pretrain.py"
+* Feeding the first level reconstructed output to the second network and thrid network via pretrained model, separately."2levCAE.py and 3levCAE.py", respectively.
+* Once the training is done, extract the individual latent representation corresponding to each instance. (feature_extraction.py)
 * Finding the optimal *K* in clustering (In our case, we utilized the method of Silhouette coefficient)
-* Fuse the features and fed to kmeans clustering with the optimal k (Can be found in kmeans.py) *"to obtain the predicted labels"*
+* Generate the mutual information, and feed to kmeans clustering with the optimal k (Can be found in kmeans.py) in order to obtain the predicted labels.
 
 Also, it is worth mentioning that, extracting label information is to measure the discriminant performance by comparing with prediction labels.
-In our case, we utilize training labels in order to visualize two dimensional map.
+
 
 
 # Requirements

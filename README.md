@@ -29,7 +29,7 @@ Note that, a customized backbone architecture can be found in "Backbone.py"
 * Finding the optimal *K* in clustering (In our case, we utilized the method of Silhouette coefficient)
 * Generate the mutual information, and feed to kmeans clustering with the optimal k (Can be found in kmeans.py) in order to obtain the predicted labels.
 
-Also, it is worth mentioning that, the purpose of generating label information is to measure the discriminant performance by comparing with prediction labels, instead of utilizing it during the training phase.
+Also, it is worth mentioning that, the purpose of generating label information is to measure the discriminant performance by comparing with prediction labels. (not for the training phase)
 
 
 

@@ -1,6 +1,6 @@
 # Unsupervised Learning Method via Triple Reconstruction for the Classification of Ultrasound Breast Lesions
 ___
-A pytorch implementation of the paper "*Unsupervised Learning Method via Triple Reconstruction for the Classification of Ultrasound Breast Lesions*' - '*Biomedical Signal Processing and Control*'. [**PAPER**](https://www.sciencedirect.com/science/article/pii/S1746809422003044?via%3Dihub)
+A pytorch implementation of the paper "*Unsupervised Learning Method via Triple Reconstruction for the Classification of Ultrasound Breast Lesions*' - '*Biomedical Signal Processing and Control*', Elsevier. [**PAPER**](https://www.sciencedirect.com/science/article/pii/S1746809422003044?via%3Dihub)
 
 # Datasets
 ___

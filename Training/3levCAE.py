@@ -65,8 +65,12 @@ def Third_REC(data_path, log_dir, pretrain_model_path, epochs=20, batch_size=64)
                 features = None  # Modify this as needed for your use case
 
             optimizer.zero_grad()
+
+            #Inputting 1st level REC Output
             train_output, _ = model(output_rec)
-            loss = criterion(train_output, train_image) # Third Target Mapping
+
+            # Third REC Target Mapping
+            loss = criterion(train_output, train_image) # 
 
             loss.backward()
             optimizer.step()

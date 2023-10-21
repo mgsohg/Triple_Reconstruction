@@ -1,15 +1,14 @@
-import torch
+
 import torch.nn as nn
 import torchvision.datasets as dsets
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
 from Backbone import ConvAutoencoder
-import numpy as np
-import matplotlib.pyplot as plt
 import tensorflow as tf
 import os
+import argparse
 
-def Sec_REC():
+def Sec_REC(data_path, log_dir, pretrain_model_path, epochs=20, batch_size=64):
     # Set random seed for reproducibility if needed
     torch.manual_seed(42)
 
@@ -21,21 +20,14 @@ def Sec_REC():
         transforms.Normalize(mean=[0.5], std=[0.5]),
     ])
 
-    # Define the paths for training and testing data
-    train_data_path = '...'  # Replace with your training data path
-    test_data_path = '...'   # Replace with your testing data path
-
     # Create datasets
-    train_dataset = dsets.ImageFolder(train_data_path, transform=transform)
-    test_dataset = dsets.ImageFolder(test_data_path, transform=transform)
+    train_dataset = dsets.ImageFolder(data_path, transform=transform)
 
-    # Create data loaders
-    batch_size = 64
+    # Create data loader
     train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
-    test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
 
     # Check for GPU availability
-    device = torch.device("cuda" if torch.cuda.is available() else "cpu")
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # Initialize the 2levCAE model
     model = ConvAutoencoder()
@@ -49,17 +41,15 @@ def Sec_REC():
     load = None  # Replace with code to load a pre-trained model
 
     # TensorFlow SummaryWriter for logging
-    log_dir = 'logs'  # Define your log directory
     writer = tf.summary.create_file_writer(log_dir)
 
     # Training parameters
-    training_epochs = 20
     ToT_train_loss = []
 
     print('2lev CAE Start')
     print()
 
-    for epoch in range(1, training_epochs + 1):
+    for epoch in range(1, epochs + 1):
         model.train()
         train_loss = 0.0
 
@@ -75,6 +65,8 @@ def Sec_REC():
 
             optimizer.zero_grad()
             train_output, _ = model(train_image)
+
+            #Second Level REC Mapping
             loss = criterion(train_output, train_image)
 
             loss.backward()
@@ -99,4 +91,12 @@ def Sec_REC():
         tf.summary.trace_export(name="model_trace", step=0, profiler_outdir=log_dir)
 
 if __name__ == "__main__":
-    Sec_REC()
+    parser = argparse.ArgumentParser(description="Train a 2levCAE model.")
+    parser.add_argument('--data_path', type=str, help='Path to training data', required=True)
+    parser.add_argument('--log_dir', type=str, help='Directory for TensorFlow logs', required=True)
+    parser.add_argument('--pretrain_model_path', type=str, help='Path to a pre-trained model')
+    parser.add_argument('--epochs', type=int, default=20, help='Number of training epochs')
+    parser.add_argument('--batch_size', type=int, default=64, help='Batch size for training')
+
+    args = parser.parse_args()
+    Sec_REC(args.data_path, args.log_dir, args.pretrain_model_path, args.epochs, args.batch_size)

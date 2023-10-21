@@ -99,4 +99,4 @@ def Sec_REC():
         tf.summary.trace_export(name="model_trace", step=0, profiler_outdir=log_dir)
 
 if __name__ == "__main__":
-    main()
+    Sec_REC()

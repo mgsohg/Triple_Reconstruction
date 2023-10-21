@@ -45,7 +45,11 @@ def train_baseline_model(data_path, save_path, epochs=40, batch_size=64):
             train_image = train_image.to(device)
             optimizer.zero_grad()
             train_output, _ = model(train_image)
-            loss = criterion(train_output, train_image)   ## GENERIC TRAINING SCHEME
+
+             ## GENERIC TRAINING SCHEME
+            loss = criterion(train_output, train_image)  
+
+            
             loss.backward()
             optimizer.step()
             train_loss += loss.item() * train_image.size(0)

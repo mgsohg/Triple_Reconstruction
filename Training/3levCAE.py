@@ -7,8 +7,9 @@ from Backbone import ConvAutoencoder
 import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
+import argparse
 
-def Third_REC():
+def Third_REC(data_path, log_dir, pretrain_model_path, epochs=20, batch_size=64):
     # Set random seed for reproducibility if needed
     torch.manual_seed(42)
 
@@ -20,18 +21,11 @@ def Third_REC():
         transforms.Normalize(mean=[0.5], std=[0.5]),
     ])
 
-    # Define the paths for training and testing data
-    train_data_path = '...'  # Replace with your training data path
-    test_data_path = '...'   # Replace with your testing data path
-
     # Create datasets
-    train_dataset = dsets.ImageFolder(train_data_path, transform=transform)
-    test_dataset = dsets.ImageFolder(test_data_path, transform=transform)
+    train_dataset = dsets.ImageFolder(data_path, transform=transform)
 
-    # Create data loaders
-    batch_size = 64
+    # Create data loader
     train_loader = DataLoader(dataset=train_dataset, batch_size=batch_size, shuffle=True)
-    test_loader = DataLoader(dataset=test_dataset, batch_size=batch_size, shuffle=False)
 
     # Check for GPU availability
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -48,17 +42,15 @@ def Third_REC():
     load = None  # Replace with code to load a pre-trained model
 
     # TensorFlow SummaryWriter for logging
-    log_dir = 'logs'  # Define your log directory
     writer = tf.summary.create_file_writer(log_dir)
 
     # Training parameters
-    training_epochs = 20
     ToT_train_loss = []
 
     print('3lev CAE Start')
     print()
 
-    for epoch in range(1, training_epochs + 1):
+    for epoch in range(1, epochs + 1):
         model.train()
         train_loss = 0.0
 
@@ -100,4 +92,12 @@ def Third_REC():
     # Additional code for saving the third model can be added here
 
 if __name__ == "__main__":
-    Third_REC()
+    parser = argparse.ArgumentParser(description="Train a 3levCAE model.")
+    parser.add_argument('--data_path', type=str, help='Path to training data', required=True)
+    parser.add_argument('--log_dir', type=str, help='Directory for TensorFlow logs', required=True)
+    parser.add_argument('--pretrain_model_path', type=str, help='Path to a pre-trained model')
+    parser.add_argument('--epochs', type=int, default=20, help='Number of training epochs')
+    parser.add_argument('--batch_size', type=int, default=64, help='Batch size for training')
+
+    args = parser.parse_args()
+    Third_REC(args.data_path, args.log_dir, args.pretrain_model_path, args.epochs, args.batch_size)
